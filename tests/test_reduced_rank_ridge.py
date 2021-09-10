@@ -2,7 +2,7 @@ import numpy as np
 import sklearn.datasets
 import sklearn.linear_model
 
-from .. import ReducedRankRidge
+from rrpy import ReducedRankRidge
 
 def test_reduced_rank_regression_intercept():
     X, Y = sklearn.datasets.make_regression(n_samples=100, n_features=50, n_targets=50, random_state=0, n_informative=25)
