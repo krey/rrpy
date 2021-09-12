@@ -14,8 +14,8 @@ def _fit_rrr_no_intercept(X: np.ndarray, Y: np.ndarray, alpha: float, rank: int,
     memory = sklearn.utils.validation.check_memory(memory)
     fit = memory.cache(_fit_rrr_no_intercept_all_ranks)
     beta_ridge, Vt = fit(X, Y, alpha, solver)
-    return Vt[:rank, :].T @ Vt[:rank, :] @ beta_ridge
-    
+    return Vt[:rank, :].T @ (Vt[:rank, :] @ beta_ridge)
+
 class ReducedRankRidge(sklearn.base.MultiOutputMixin, sklearn.base.RegressorMixin, sklearn.linear_model._base.LinearModel):
     def __init__(self, alpha=1.0, fit_intercept=True, rank=None, ridge_solver='auto', memory=None):
         self.alpha = alpha
@@ -38,3 +38,4 @@ class ReducedRankRidge(sklearn.base.MultiOutputMixin, sklearn.base.RegressorMixi
         else:
             self.intercept_ = np.zeros(y.shape[1])
         return self
+
