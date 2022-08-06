@@ -1,9 +1,17 @@
 # rrpy
 
 **rrpy** is a scikit-learn compatible Python implementation of reduced rank ridge regression.
-It is based on `rrs.fit` method of the R package **rrpack**, which is in turn based on [[1]](#1).
+It is based on the `rrs.fit` method of the R package **rrpack**, which is in turn based on [[1]](#1).
 
-It does not support missing values, though such a feature could be added using https://github.com/aksarkar/wlra.
+## Installation
+
+```
+pip install git+https://github.com/krey/rrpy.git
+```
+
+## Usage
+
+This implementation does not support missing values, though such a feature could be added using https://github.com/aksarkar/wlra.
 
 The `ReducedRankRidge` estimator has a `memory` parameter which allows rapid tuning of the `rank` parameter:
 ```python
