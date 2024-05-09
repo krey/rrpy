@@ -4,7 +4,7 @@ import sklearn.linear_model
 def _fit_rrr_no_intercept_all_ranks(X: np.ndarray, Y: np.ndarray, alpha: float, solver: str):
     ridge = sklearn.linear_model.Ridge(alpha=alpha, fit_intercept=False, solver=solver)
     beta_ridge = ridge.fit(X, Y).coef_
-    Lambda = np.eye(X.shape[1]) * np.sqrt(np.sqrt(alpha))
+    Lambda = np.eye(X.shape[1]) * np.sqrt(alpha)
     X_star = np.concatenate((X, Lambda))
     Y_star = X_star @ beta_ridge.T
     _, _, Vt = np.linalg.svd(Y_star, full_matrices=False)
